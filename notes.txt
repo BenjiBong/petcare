@@ -1,0 +1,41 @@
+php artisan make:model Post -m
+make model with migration
+use singular for model
+
+
+
+------------------------Forms----------------------------------------------
+go to:
+https://laravelcollective.com/docs/master/html
+run this:
+composer require "laravelcollective/html":"^5.4.0"
+(for forms)
+
+
+Next, add your new provider to the providers array of config/app.php:
+
+  'providers' => [
+    // ...
+    Collective\Html\HtmlServiceProvider::class,
+    // ...
+  ],
+Finally, add two class aliases to the aliases array of config/app.php:
+
+  'aliases' => [
+    // ...
+      'Form' => Collective\Html\FormFacade::class,
+      'Html' => Collective\Html\HtmlFacade::class,
+    // ...
+  ],
+
+
+  -------------------WYSIWYG editor------------------
+  https://github.com/unisharp/laravel-ckeditor
+  Set up package
+  composer require unisharp/laravel-ckeditor  Add ServiceProvider
+
+  Edit config/app.php, add the following file to Application Service Providers section.
+  Unisharp\Ckeditor\ServiceProvider::class,
+
+  Publish the resources
+  php artisan vendor:publish --tag=ckeditor
