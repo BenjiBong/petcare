@@ -5,7 +5,7 @@
     <h1>Edit Pet</h1>
     <div class="row">
       <div class="col-md-4 col-sm-4">
-        {!! Form::open(['action'=>['PetsController@update', $pet->id], 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
+        {!! Form::open(['action' => ['PetsController@update', $pet->id], 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
         <div class="form-group">
             {{Form::label('name', 'Name')}}
             {{Form::text('name', $pet->name, ['class' => 'form-control', 'placeholder'=>'Name'])}}

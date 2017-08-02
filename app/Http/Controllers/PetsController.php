@@ -148,16 +148,20 @@ class PetsController extends Controller
             $path = $request->file('pet_image')->storeAs('public/pet_images', $filenameToStore);
           }
 
-          //to create pet
+          //to edit pet
           $pet = Pet::find($id);
           $pet->name = $request->input('name');
           $pet->type = $request->input('type');
           $pet->color = $request->input('color');
           if($request->hasFile('pet_image')){
+            //unlink('public/pet_images/' . $pet->pet_image);
+           $filename = $pet->pet_image;
+            $filepathname  = 'public/pet_images/'. $filename;
+            Storage::delete($filepathname);
             $pet->pet_image = $filenameToStore;
 
           }
-          
+
           $pet->save();
 
           return redirect('/pets')->with('success', 'Pet Updated');
@@ -171,8 +175,11 @@ class PetsController extends Controller
    */
   public function destroy($id)
   {
-      $pet = Post::find($id);
+      $pet = Pet::find($id);
+      $filename = $pet->pet_image;
+       $filepathname  = 'public/pet_images/'. $filename;
+       Storage::delete($filepathname);
       $pet->delete();
-      return redirect('/posts')->with('success', 'Post Removed');
+      return redirect('/posts')->with('success', 'Pet Deleted');
   }
 }
