@@ -3,14 +3,6 @@
 @section('content')
 
     <a href="/pets" class="btn btn-default">Go back</a>
-    <br>
-    <br>
-    <div class="row">
-      <div class="col-md-4 col-sm-4">
-        <img style="width:100%" src="/storage/pet_images/{{$pet->pet_image}}" alt="">
-      </div>
-
-    </div>
     <h1>{{$pet->name}}</h1>
     <div><p>Type: {{$pet->type}}</p></div>
     <div><p>Color: {{$pet->color}}</p></div>
@@ -26,6 +18,4 @@
         {{Form::hidden('_method', 'DELETE')}}
         {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
         {!!Form::close()!!}
-        <br>
-        <br>
 @endsection

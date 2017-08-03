@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;//to be able to delete image. For storage:: library
 use App\Pet;//to use eloquent
-use Illuminate\Support\Facades\Auth;
 
 class PetsController extends Controller
 {
@@ -22,10 +21,6 @@ class PetsController extends Controller
       //$pets=DB::select('SELECT * FROM posts'); to use sql
       //$pets = Post::orderBy('created_at', 'asc')->take(1)->get();//to limit to just one post
       //$pets = Post::orderBy('created_at', 'asc')->get();
-
-      if (!Auth::user()){
-        return redirect('/')->with('error', 'You need to login!');
-      }
 
       $pets = Pet::orderBy('created_at', 'asc')->paginate(10);//paginate with 10 per page
       return view('pets.index')->with('pets', $pets);
@@ -105,17 +100,8 @@ class PetsController extends Controller
    */
   public function edit($id)
   {
-    $pet = Pet::find($id);
-
-    if (!Auth::user()){
-      return redirect('/')->with('error', 'You need to login!');
-    }
-    if (auth()->user()->id != $pet->user_id){
-      return redirect('/pets')->with('error', 'You do not have permission to edit this pet!');
-    }
+      $pet = Pet::find($id);
       return view('pets.edit')->with('pet', $pet);
-      //$pets = Pet::orderBy('created_at', 'asc')->paginate(10);//paginate with 10 per page
-      //return view('pets.index')->with('pets', $pets);
   }
 
   /**
@@ -127,44 +113,18 @@ class PetsController extends Controller
    */
   public function update(Request $request, $id)
   {
-    $this->validate($request, [
-        'name' => 'required',
-        'type' => 'required',
-        'color' => 'required',
-        'pet_image' => 'image|nullable|max:1999',
-    ]);
+       $this->validate($request, [
+          'title' => 'required',
+          'body' => 'required'
+      ]);
 
-    //Handle file upload
-          if($request->hasFile('pet_image')){
-            //Get filename with extension
-            $filenameWithExt = $request->file('pet_image')->getClientOriginalName();
-            //Get just file name
-            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-            //Get just extension
-            $extension = $request->file('pet_image')->getClientOriginalExtension();
-            //Filename to Store
-            $filenameToStore = $filename.'_'.time().'.'.$extension;
+      //to update post
+      $pet = Post::find($id);
+      $pet->title = $request->input('title');
+      $pet->body = $request->input('body');
+      $pet->save();
 
-            $path = $request->file('pet_image')->storeAs('public/pet_images', $filenameToStore);
-          }
-
-          //to edit pet
-          $pet = Pet::find($id);
-          $pet->name = $request->input('name');
-          $pet->type = $request->input('type');
-          $pet->color = $request->input('color');
-          if($request->hasFile('pet_image')){
-            //unlink('public/pet_images/' . $pet->pet_image);
-           $filename = $pet->pet_image;
-            $filepathname  = 'public/pet_images/'. $filename;
-            Storage::delete($filepathname);
-            $pet->pet_image = $filenameToStore;
-
-          }
-
-          $pet->save();
-
-          return redirect('/pets')->with('success', 'Pet Updated');
+      return redirect('/posts')->with('success', 'Post Updated');
   }
 
   /**
@@ -175,11 +135,8 @@ class PetsController extends Controller
    */
   public function destroy($id)
   {
-      $pet = Pet::find($id);
-      $filename = $pet->pet_image;
-       $filepathname  = 'public/pet_images/'. $filename;
-       Storage::delete($filepathname);
+      $pet = Post::find($id);
       $pet->delete();
-      return redirect('/posts')->with('success', 'Pet Deleted');
+      return redirect('/posts')->with('success', 'Post Removed');
   }
 }

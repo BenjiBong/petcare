@@ -38,5 +38,7 @@ Route::get('/about', 'PagesController@about');
 Route::get('/services', 'PagesController@services');
 Route::resource('posts', 'PostsController');
 Route::resource('pets', 'PetsController');
+Route::resource('products', 'ProductsController');
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
+
