@@ -156,23 +156,23 @@ class ProductsController extends Controller
 
 
         //to update post
-        $products = Product::find($id);
-        $products->title = $request->input('title');
-        $products->body = $request->input('body');
-        $products->price = $request->input('price');
-        $products->sku = $request->input('sku');
-        $products->stock = $request->input('stock');
+        $product = Product::find($id);
+        $product->title = $request->input('title');
+        $product->body = $request->input('body');
+        $product->price = $request->input('price');
+        $product->sku = $request->input('sku');
+        $product->stock = $request->input('stock');
 
         if($request->hasFile('product_image')){
           if ($product->product_image !='noimage.jpg')
           {
             //Delete Image
-            Storage::delete('public/products_image/'.$product->product_image);
+            Storage::delete('public/product_image/'.$product->product_image);
           }
-          $products->product_image = $filenameToStore;
+          $product->product_image = $filenameToStore;
 
         }
-        $products->save();
+        $product->save();
 
         return redirect('/products')->with('success', 'Product Updated');
     }
