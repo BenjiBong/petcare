@@ -40,5 +40,4 @@ Route::resource('posts', 'PostsController');
 Route::resource('pets', 'PetsController');
 Route::resource('products', 'ProductsController');
 Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
-
+Route::get('/dashboard', 'DashboardController@index')->name('home');
