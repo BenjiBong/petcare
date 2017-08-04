@@ -17,7 +17,7 @@
         <small>Last updated: {{$products->updated_at}}</small>
         <hr>
 
-    
+
 
             <a href="/products/{{$products->id}}/edit" class="btn btn-default">Edit</a>
 
@@ -26,6 +26,6 @@
             {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
             {!!Form::close()!!}
             <br><br>
-          
-        
+
+
 @endsection
