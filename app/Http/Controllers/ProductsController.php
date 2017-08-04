@@ -164,6 +164,11 @@ class ProductsController extends Controller
         $products->stock = $request->input('stock');
 
         if($request->hasFile('product_image')){
+          if ($product->product_image !='noimage.jpg')
+          {
+            //Delete Image
+            Storage::delete('public/products_image/'.$product->product_image);
+          }
           $products->product_image = $filenameToStore;
 
         }
