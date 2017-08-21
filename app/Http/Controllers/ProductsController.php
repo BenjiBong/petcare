@@ -29,13 +29,16 @@ class ProductsController extends Controller
     public function index()
     {
         //
-        // $posts = Post::all();
+        $products = Product::all();
         // $posts = Post::where('title', 'First Post')->get();
         //$posts=DB::select('SELECT * FROM posts'); to use sql
         //$posts = Post::orderBy('created_at', 'asc')->take(1)->get();//to limit to just one post
         //$posts = Post::orderBy('created_at', 'asc')->get();
+        $search =\Request::get('search');
 
-        $products = Product::orderBy('created_at', 'asc')->paginate(10);//paginate with 10 per page
+        $products = Product::where('title','like','%'.$search.'%')
+        ->orderBy('created_at', 'asc')
+        ->paginate(6);//paginate with 10 per page
         return view('products.index')->with('products', $products);
     }
 
