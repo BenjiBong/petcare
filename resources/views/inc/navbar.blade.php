@@ -29,15 +29,14 @@
                     </ul>
                     <ul class="nav navbar-nav">
                     <li><a href="/about">About</a></li>
-                    <li><a href="/services">Services</a></li>
                     <li><a href="/products">Products</a></li>
-                    <li><a href="/posts">Blog</a></li>
                     <li><a href="/pets">Pets</a></li>
+                    <li><a href="/pets/create">Add pet</a></li>
                     </ul>
 
                  </div>
                 <!-- Right Side Of Navbar -->
-                
+
                 <ul class="nav navbar-nav navbar-right">
 
                 {!! Form::open([Request::get('search'),'route' => 'products.index','method'=>'GET','class'=>'navbar-form navbar-right','role'=> 'search'])  !!}

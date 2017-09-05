@@ -6,7 +6,10 @@
     "type": "project",
     "require": {
         "php": ">=5.6.4",
+        "barryvdh/laravel-debugbar": "2.4",
         "doctrine/dbal": "^2.6",
+        "illuminate/support": "5.4",
+        "laravel/dusk": "1.1",
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.4.0",
@@ -15,6 +18,7 @@
     "require-dev": {
         "fzaninotto/faker": "~1.4",
         "mockery/mockery": "0.9.*",
+        "naneau/semver": "^0.0.7",
         "phpunit/phpunit": "~5.7"
     },
     "autoload": {
