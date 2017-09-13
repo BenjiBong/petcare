@@ -13,6 +13,18 @@ class LoginTest extends DuskTestCase
      *
      * @return void
      */
+     public function testLoginFail()
+     {
+       $this->browse(function (Browser $browser) {
+             $browser->visit('/login')
+                     ->type('email', 'example@example.com')
+                     ->type('password', 'example12')
+                     ->press('Login')
+                     ->assertPathIs('/login')
+                     ->assertSee('These credentials do not match our records.');
+         });
+           
+     }
     public function testLogin()
     {
       $this->browse(function (Browser $browser) {
@@ -30,4 +42,5 @@ class LoginTest extends DuskTestCase
           ->visit('/pets');
 });*/
     }
+
 }
