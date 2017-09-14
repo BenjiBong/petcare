@@ -48,6 +48,10 @@
                                     <span class="help-block">
                                         <strong>{{ $errors->first('password') }}</strong>
                                     </span>
+                                  @else
+                                    <p id="passwordHelpBlock" class="form-text text-muted">
+                                      Your password must be at least 6 characters long.
+                                      </p>
                                 @endif
                             </div>
                         </div>
