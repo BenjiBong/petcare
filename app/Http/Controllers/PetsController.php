@@ -10,6 +10,17 @@ use Illuminate\Support\Facades\Auth;
 class PetsController extends Controller
 {
   /**
+   * Create a new controller instance.
+   *
+   * @return void
+   */
+  public function __construct()
+  {
+      $this->middleware('auth');//to require users to log in
+  }
+
+
+  /**
    * Display a listing of the resource.
    *
    * @return \Illuminate\Http\Response
