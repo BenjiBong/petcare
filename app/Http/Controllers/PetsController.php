@@ -81,7 +81,7 @@ class PetsController extends Controller
             $pet->pet_image = $filenameToStore;
             $pet->save();
 
-            return redirect('/pets')->with('success', 'Pet Saved');
+            return redirect('/dashboard')->with('success', 'Pet Saved');
   }
 
   /**
@@ -166,7 +166,7 @@ class PetsController extends Controller
 
           $pet->save();
 
-          return redirect('/pets')->with('success', 'Pet Updated');
+          return redirect('/dashboard')->with('success', 'Pet Updated');
   }
 
   /**
@@ -184,6 +184,6 @@ class PetsController extends Controller
          Storage::delete('public/pet_images/'. $pet->pet_image);
        }
       $pet->delete();
-      return redirect('/posts')->with('success', 'Pet Deleted');
+      return redirect('/dashboard')->with('success', 'Pet Deleted');
   }
 }

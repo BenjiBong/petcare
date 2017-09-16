@@ -31,13 +31,16 @@ Route::get('/about', function () {
 Route::get('/welcome', function () {
     return view('welcome');
 });
-
+//Route::post('/dashboard','UserController@update_profile');
+//Route::get('/dashboard','UserController@dashboard');
 Route::get('pages.about', 'PagesController@about');
 Route::get('/', 'PagesController@index');
 Route::get('/about', 'PagesController@about');
-Route::get('/services', 'PagesController@services');
+Route::get('/services', 'ServicesController@index');
 Route::resource('posts', 'PostsController');
 Route::resource('pets', 'PetsController');
 Route::resource('products', 'ProductsController');
 Auth::routes();
-Route::get('/dashboard', 'DashboardController@index')->name('home');
+Route::get('/dashboard', 'DashboardController@index');
+Route::post('/dashboard','DashboardController@update');
+//Route::resource('/dashboard','DashboardController');
