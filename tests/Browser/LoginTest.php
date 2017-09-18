@@ -13,21 +13,34 @@ class LoginTest extends DuskTestCase
      *
      * @return void
      */
-    public function testExample()
+     public function testLoginFail()
+     {
+       $this->browse(function (Browser $browser) {
+             $browser->visit('/login')
+                     ->type('email', 'example@example.com')
+                     ->type('password', 'example12')
+                     ->press('Login')
+                     ->assertPathIs('/login')
+                     ->assertSee('These credentials do not match our records.');
+         });
+           
+     }
+    public function testLogin()
     {
-      /*  $this->browse(function (Browser $browser) {
+      $this->browse(function (Browser $browser) {
             $browser->visit('/login')
-                    ->type('email', 'leonv@gmail.com')
-                    ->type('password', '123456')
+                    ->type('email', 'example@example.com')
+                    ->type('password', 'example')
                     ->press('Login')
-                    ->assertPathIs('/dashboard');
-                
-        });*/
-
-        $this->browse(function (Browser $browser) {
-            $browser->LoginAs(User::find(1))
-                    ->assertPathIs('/dashboard');
-                
+                    ->assertPathIs('/dashboard')
+                    ->assertSee('Dashboard');
         });
+          /*$this->browse(function ($first, $second) {
+          $first->loginAs(User::find(1))
+          ->visit('/blog');
+          $second->loginAs(User::find(2))
+          ->visit('/pets');
+});*/
     }
+
 }
