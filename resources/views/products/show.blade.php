@@ -35,7 +35,7 @@
         
             {!!Form::open(['action' => ['ProductsController@destroy', $products->id], 'method' => 'POST', 'class' => 'pull-right' ])!!}
             {{Form::hidden('_method', 'DELETE')}}
-            {{Form::submit('Delete', ['class' => 'btn btn-default '])}}
+            {{Form::submit('Delete', ['class' => 'btn btn-danger '])}}
             {!!Form::close()!!}
             <a href="/products" class="btn btn-default"><i class="fa fa-arrow-left" aria-hidden="true"></i>&nbsp;Go back</a>
             <br><br>
