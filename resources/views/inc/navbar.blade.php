@@ -17,7 +17,7 @@
 
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    {{ config('app.name', 'Petcare') }}
                 </a>
             </div>
 
@@ -25,13 +25,8 @@
                 <div>
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        &nbsp;
-                    </ul>
-                    <ul class="nav navbar-nav">
-                    <li><a href="/about">About</a></li>
-                    <li><a href="/products">Products</a></li>
-                    <li><a href="/pets">Pets</a></li>
-                    <li><a href="/pets/create">Add pet</a></li>
+                      <li><a href="/products">Shop Products</a></li>
+                      <li><a href="/pets" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink">My Pets</a></li>
                     </ul>
 
                  </div>

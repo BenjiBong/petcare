@@ -27,14 +27,14 @@ class DashboardController extends Controller
      */
     public function index()
     {
-       
+
        $user_id = auth()->user()->id;
        $users = User::find($user_id);
         $users = Auth::user();
         return view('dashboard', array('users' => Auth::user()) )->with('pets',$users->pets);
     }
 
-   
+
 
     public function update(Request $request)
     {
@@ -80,5 +80,5 @@ class DashboardController extends Controller
         return view('/dashboard', array('users' => Auth::user()) );
     }
         //Handle file upload
-       
+
 }
