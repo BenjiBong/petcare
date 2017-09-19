@@ -77,7 +77,10 @@ class DashboardController extends Controller
             $user->profile_img = $filename;
             $user->save();
         }
-        return view('/dashboard', array('users' => Auth::user()) );
+        $user_id = auth()->user()->id;
+        $users = User::find($user_id);
+         $users = Auth::user();
+        return view('/dashboard', array('users' => Auth::user()) )->with('pets',$users->pets);
     }
         //Handle file upload
 
