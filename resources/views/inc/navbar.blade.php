@@ -26,7 +26,6 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
                       <li><a href="/products">Shop Products</a></li>
-                      <li><a href="/pets" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink">My Pets</a></li>
                     </ul>
 
                  </div>
