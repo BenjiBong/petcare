@@ -72,7 +72,7 @@ class DashboardController extends Controller
             $profile_img = $request->file('profile_img');
             $filename = time() . '.' . $profile_img->getClientOriginalExtension();
             Image::make($profile_img)->resize(300,300)->save( public_path('/storage/profile_img/' .$filename ));
-
+            
             $user = Auth::user();
             $user->profile_img = $filename;
             $user->save();

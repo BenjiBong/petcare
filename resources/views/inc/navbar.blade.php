@@ -45,9 +45,11 @@
                 {!! Form::close() !!}
                     <!-- Authentication Links -->
                     @if (Auth::guest())
+                        <li><a href="#"><i class="fa fa-cart-plus" aria-hidden="true"></i>&nbsp;Shopping Cart</a></li>
                         <li><a href="{{ route('login') }}"><i class="fa fa-user-o" aria-hidden="true"></i>&nbsp;Login</a></li>
                         <li><a href="{{ route('register') }}">Register</a></li>
                     @else
+                        <li><a href="#"><i class="fa fa-cart-plus" aria-hidden="true"></i>&nbsp;Shopping Cart</a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="position:relative; padding-left:50px;">
                                 <img src="/storage/profile_img/{{Auth::user()->profile_img}}" style="width:32px; height:32px; position:absolute; top:10px; left:10px; border-radius:50%;">&nbsp;
