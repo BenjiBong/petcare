@@ -78,7 +78,7 @@ class PetsController extends Controller
               //Filename to Store
               $filenameToStore = $filename.'_'.time().'.'.$extension;
 
-              $path = $request->file('pet_image')->storeAs('public/pet_images', $filenameToStore);
+              $path = $request->file('pet_image')->storeAs('storage/pet_images', $filenameToStore);
             }
             else {
               $filenameToStore = 'noimage.jpg';
@@ -156,7 +156,7 @@ class PetsController extends Controller
             //Filename to Store
             $filenameToStore = $filename.'_'.time().'.'.$extension;
 
-            $path = $request->file('pet_image')->storeAs('public/pet_images', $filenameToStore);
+            $path = $request->file('pet_image')->storeAs('/storage/pet_images', $filenameToStore);
           }
 
           //to edit pet
@@ -169,7 +169,7 @@ class PetsController extends Controller
             if ($pet->pet_image !='noimage.jpg')
             {
               //Delete Image
-              Storage::delete('public/pet_images/'. $pet->pet_image);
+              Storage::delete('/storage/pet_images/'. $pet->pet_image);
             }
             $pet->pet_image = $filenameToStore;
 
@@ -192,7 +192,7 @@ class PetsController extends Controller
        if ($pet->pet_image !='noimage.jpg')//if pet image exists
        {
          //Delete Image
-         Storage::delete('public/pet_images/'. $pet->pet_image);
+         Storage::delete('/storage/pet_images/'. $pet->pet_image);
        }
       $pet->delete();
       return redirect('/dashboard')->with('success', 'Pet Deleted');
