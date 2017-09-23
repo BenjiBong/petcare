@@ -41,12 +41,16 @@ class ProductsController extends Controller
     }
 
     public function getCart(){
-        if(Session::has('cart'))
+        
+        if(!Session::has('cart'))
         {
             return view('products.shopping-cart');
         }
         $cart = Session::get('cart');
-        $cart = new Cart('$cart');
+        if(!$cart)
+        {
+         $cart = new Cart($cart);
+        }
         return view('products.shopping-cart',['products' => $cart->items, 'totalPrice' => $cart->totalPrice]);
     }
     /**
