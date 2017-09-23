@@ -29,7 +29,7 @@
             <i class="fa fa-pencil-square" aria-hidden="true"></i>&nbsp;Edit
             </a>
 
-            <a href="/cart" class="btn btn-default">
+            <a href="{{route('product.addToCart', ['id' => $products->id])}}" class="btn btn-default">
             <i class="fa fa-shopping-cart"></i>&nbsp;Add Cart
             </a>
         

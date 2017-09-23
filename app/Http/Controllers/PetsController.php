@@ -180,29 +180,6 @@ class PetsController extends Controller
           return redirect('/dashboard')->with('success', 'Pet Updated');
   }
 
-  /**
-   * Remove the specified resource from storage.
-   *
-   * @param  int  $id
-   * @return \Illuminate\Http\Response
-   */
-  public function destroy($id)
-  {
-      $pet = Pet::find($id);
-       if ($pet->pet_image !='noimage.jpg')//if pet image exists
-       {
-         //Delete Image
-         Storage::delete('public/pet_images/'. $pet->pet_image);
-       }
-      $pet->delete();
-      return redirect('/dashboard')->with('success', 'Pet Deleted');
-  }
-}
-
-          $pet->save();
-
-          return redirect('/dashboard')->with('success', 'Pet Updated');
-  }
 
   /**
    * Remove the specified resource from storage.

@@ -15,6 +15,7 @@
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.4.0",
         "unisharp/laravel-ckeditor": "^4.6"
+        //"gloudemans/shoppingcart": "~1.3"
     },
     "require-dev": {
         "codeception/codeception": "dev-master",

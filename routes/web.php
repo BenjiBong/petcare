@@ -31,6 +31,17 @@ Route::get('/about', function () {
 Route::get('/welcome', function () {
     return view('welcome');
 });
+
+Route::get('/add_to_cart{id}',[
+    'uses' => 'ProductsController@getAddToCart',
+    'as' => 'product.addToCart'
+]);
+
+Route::get('/shopping-cart',[
+    'uses' => 'ProductsController@getCart',
+    'as' => 'product.shoppingCart'
+]);
+
 //Route::post('/dashboard','UserController@update_profile');
 //Route::get('/dashboard','UserController@dashboard');
 Route::get('pages.about', 'PagesController@about');
