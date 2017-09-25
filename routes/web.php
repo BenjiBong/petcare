@@ -43,4 +43,9 @@ Route::resource('products', 'ProductsController');
 Auth::routes();
 Route::get('/dashboard', 'DashboardController@index');
 Route::post('/dashboard','DashboardController@update');
-//Route::resource('/dashboard','DashboardController');
+
+Route::prefix('admin')->group(function(){
+  Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
+  Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
+  Route::get('/','AdminController@index')->name('admin.dashboard');
+});
