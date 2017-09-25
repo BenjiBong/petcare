@@ -17,8 +17,9 @@
                                 <h4 class="card-title"><a href="/products/{{$product->id}}">{{$product->title}}</a></h4>
                                 <h5 class="card-text">SKU :{{$product->sku}}</h5>
                                 <h5 class="card-text">Price :RM{{$product->price}}</h5>
-                                    <div class="clearfix"><a href="#" class="btn btn-default pull-right" role="button">
-                                        <i class="fa fa-shopping-cart"></i>&nbsp;Add Cart</a>
+                                    <div class="clearfix"><a href="{{route('product.addToCart', ['id' => $product->id])}}s" class="btn btn-default pull-right" role="button">
+                                        <i class="fa fa-shopping-cart"></i>&nbsp;Add Cart
+                                        </a>
                                     </div>
                                 
                             </div>

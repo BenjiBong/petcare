@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades;
 use App\Product;//to use eloquent
 use DB;//to use sql to query.
+use Session;
+use App\Cart;
 
 class ProductsController extends Controller
 {
@@ -20,7 +23,36 @@ class ProductsController extends Controller
         $this->middleware('auth', ['except' => ['index', 'show']]);
     }
 
+    public function getAddToCart(Request $request, $id){
+        $product = Product::find($id);
+        $cart = Session::has('cart') ? Session::get('cart') : null;
+        //$cart = new Cart($oldCart);
+        if(!$cart)
+        {
+         $cart = new Cart($cart);
+        }
+        //$product = $product->id;
+        $cart->add($product, $product->id);
+        
+        Session::put('cart', $cart);
+        //$request->session()->put('cart', $cart);
+        //var_dump($request->session()->get('cart'));
+        return redirect()->route('products.index');
+    }
 
+    public function getCart(){
+        
+        if(!Session::has('cart'))
+        {
+            return view('products.shopping-cart');
+        }
+        $cart = Session::get('cart');
+        if(!$cart)
+        {
+         $cart = new Cart($cart);
+        }
+        return view('products.shopping-cart',['products' => $cart->items, 'totalPrice' => $cart->totalPrice]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -123,7 +155,7 @@ class ProductsController extends Controller
 
         /*Check for correct user_id
         if (auth()->product()->id != $products->product_id){
-          return redirect('/products')->with('error', 'You do not have permission to edit this pproduct!');
+          return redirect('/products')->with('error', 'You do not have permission to edit this product!');
         }*/
 
         return view('products.edit')->with('products', $products);
@@ -200,4 +232,6 @@ class ProductsController extends Controller
         $product->delete();
         return redirect('/products')->with('success', 'Product Removed');
     }
+
+   
 }

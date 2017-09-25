@@ -5,6 +5,8 @@ namespace App\Providers;
 use Laravel\Dusk\DuskServiceProvider;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Foundation\Application;
+use Illuminate\Routing\Redirector;
 
 class AppServiceProvider extends ServiceProvider
 {
