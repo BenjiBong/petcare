@@ -15,9 +15,13 @@
 </head>
 <body>
   @include('inc.admin.navbar')
-  <div class="container">
+  <div class="container-fluid admin-container">
+    <div class="row">
       @include('inc.messages')
+      @include('inc.admin.sidenavbar')
      @yield('content')
+    </div>
+
   </div>
     <!-- Scripts -->
 

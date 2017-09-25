@@ -26,4 +26,9 @@ class AdminController extends Controller
     {
         return view('admin');
     }
+    
+    public function showUsers(){
+      $users = User::orderBy('created_at', 'asc')->paginate(10);//paginate with 10 per page
+      return view('admin.users')->with('users', $users);
+    }
 }

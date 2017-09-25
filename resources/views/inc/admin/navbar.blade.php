@@ -3,7 +3,7 @@
  <head><link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css"></head>
 </html>
 <link rel="stylesheet" href="{{ asset('css/font-awesome.css')}}" type="text/css">
- <nav class="navbar navbar-inverse">
+ <nav class="navbar navbar-inverse" style="margin-bottom: 0;">
      <div class="container">
          <div class="navbar-header">
 
@@ -31,7 +31,7 @@
               </div>
              <!-- Right Side Of Navbar -->
 
-             <ul class="nav navbar-nav navbar-right">
+             <ul class="nav navbar-nav navbar-right" >
 
              {!! Form::open([Request::get('search'),'route' => 'products.index','method'=>'GET','class'=>'navbar-form navbar-right','role'=> 'search'])  !!}
              <div class="input-group custom-search-form">
@@ -62,7 +62,7 @@
                          </a>
 
                          <ul class="dropdown-menu" role="menu">
-                             <li><a href="/dashboard"><i class="fa fa-user-circle-o" aria-hidden="true"></i>&nbsp;Dashboard</a></li>
+                             <li><a href="/admin"><i class="fa fa-user-circle-o" aria-hidden="true"></i>&nbsp;Dashboard</a></li>
                              <li>
                                  <a href="{{ route('logout') }}"
                                      onclick="event.preventDefault();
