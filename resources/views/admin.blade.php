@@ -1,10 +1,14 @@
-@extends('layouts.app')
+@extends('layouts.admin.app')
 
 
 @section('content')
-<div class="container">
     <div class="row">
-        <div class="col-md-10 col-md-offset-1">
+      <div class="col-md-2 ">
+        <li class=&quot;active&quot;>
+                            <a href="http://demo.startlaravel.com/sb-admin-laravel"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                        </li>
+      </div>
+        <div class="col-md-10 ">
             <div class="panel panel-default">
                 <div class="panel-heading">Admin Dashboard</div>
 
@@ -17,7 +21,7 @@
                                     {{Form::submit('Submit', ['class'=>'pull-right btn btn-sm btn-primary'])}}
                             {!! Form::close() !!}
 
-                            
+
             </div>
 
         </div>
