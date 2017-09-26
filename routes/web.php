@@ -65,4 +65,5 @@ Route::prefix('admin')->group(function(){
   //Route::post('/products/{id}', 'AdminController@updateProducts')->name('admin.products.update');
   Route::delete('/products/{id}', 'ProductsController@destroy')->name('admin.products.delete');
   Route::get('/','AdminController@index')->name('admin.dashboard');
+  Route::post('/','AdminController@update')->name('admin.dashboard.update');
 });
