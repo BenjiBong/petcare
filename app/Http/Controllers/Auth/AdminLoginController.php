@@ -5,10 +5,11 @@ namespace App\Http\Controllers\Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Auth;
-
+use App\Admin;
+use App\User;
 class AdminLoginController extends Controller
 {
-  public function __construct()
+  public function _construct()
   {
     $this->middleware('guest:admin');
   }

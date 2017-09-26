@@ -165,7 +165,7 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         Unisharp\Ckeditor\ServiceProvider::class,
        //Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
-
+        
 
         /*
          * Package Service Providers...

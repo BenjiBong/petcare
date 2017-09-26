@@ -16,7 +16,7 @@ class AdminController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    public function _construct()
     {
         $this->middleware('auth:admin');
     }
@@ -69,4 +69,6 @@ class AdminController extends Controller
         return redirect('/admin/users')->with('success', 'User Deleted');
     }
 
+
+    
 }

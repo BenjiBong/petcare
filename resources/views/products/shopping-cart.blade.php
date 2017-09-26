@@ -2,41 +2,38 @@
 
 @section('content')
     <h2>Shopping Cart</h2>
-
+    <br>
+    <div class="container">
     @if(Session::has('cart'))
+    
     <div class="row">
-        <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
-            <ul class="list-group">
+        <table class="table table-hover table-condensed list-group-item">
+    				<thead>
+						<tr>
+							<th style="width:50%">Product</th>
+							<th style="width:10%">Price</th>
+							<th style="width:8%">Quantity</th>
+							<th style="width:7%" class="text-center">Subtotal</th>
+						
+						</tr>
+					</thead>
+                    
             @foreach($products as $product)
-                <li class="list-group-item">
-                    <span class="badge">{{$product['qty']}}</span>
-                    <strong>{{$product['item']['title']}}</strong>
-                    <span class="label label-success">RM: {{$product['price']}}</span>
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-primary btn-xs dropdown-toogle" data-toogle="dropdown">Action <span class="caret"></span></button>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Reduce by 1</a></li>
-                            <li><a href="#">Reduce All</a></li>
-                        </ul>
-
-                    </div>
-                </li>
-                @endforeach
-            </ul>
+            <tbody>
+                        <td>{{$product['item']['title']}}&nbsp;&nbsp;</td>
+                        <td><span class="label label-success">RM: {{$product['price']}}</span></td>
+                        <td><span class="badge text-center">{{$product['qty']}}</span></td>
+                        @endforeach
+                        <td class="text-center"><strong>Total :RM {{$totalPrice}}</strong></td>
+                    </tbody> 
+                
+        </table>
         </div>
-    </div>
-
-    <div class="row">
-        <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
-            <strong>Total :RM {{$totalPrice}}</strong>
+        <br>
+        <div class="pull right">
+            <button type="button" class="btn btn-success pull-right">Checkout</button>
         </div>
-    </div>
-    <hr>
-    <div class="row">
-        <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
-            <button type="button" class="btn btn-success">Checkout</button>
-        </div>
-    </div>     
+    </div>  
         
     @else
 
@@ -46,4 +43,5 @@
         </div>
     </div>
     @endif
+</div>
 @endsection
