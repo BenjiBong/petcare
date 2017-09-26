@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use Auth;
 use Image;
+use App\User;
+
 class UserController extends Controller
 {
     //

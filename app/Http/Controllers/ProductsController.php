@@ -33,7 +33,7 @@ class ProductsController extends Controller
         }
         //$product = $product->id;
         $cart->add($product, $product->id);
-        
+
         Session::put('cart', $cart);
         //$request->session()->put('cart', $cart);
         //var_dump($request->session()->get('cart'));
@@ -41,7 +41,7 @@ class ProductsController extends Controller
     }
 
     public function getCart(){
-        
+
         if(!Session::has('cart'))
         {
             return view('products.shopping-cart');
@@ -230,8 +230,8 @@ class ProductsController extends Controller
           Storage::delete('public/products_image/'.$product->product_image);
         }
         $product->delete();
-        return redirect('/products')->with('success', 'Product Removed');
+        return redirect('/admin/products')->with('success', 'Product Removed');
     }
 
-   
+
 }
