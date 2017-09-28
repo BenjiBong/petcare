@@ -21,10 +21,6 @@
         <hr>
         <div>
     </div>
-
-
-
-
             <a href="{{route('product.addToCart', ['id' => $products->id])}}" class="btn btn-default">
             <i class="fa fa-shopping-cart"></i>&nbsp;Add Cart
             </a>

@@ -83,30 +83,35 @@
             </div>
     </div>
     <br>
-    
+
             <div class="row cart-body">
             <form class="form-horizontal" method="post" action="">
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12  pull-right">
                     <div class="panel panel-info">
                         <div class="panel-heading">
-                            Review Order 
+                            Review Order
                         </div>
                         @foreach($products as $product)
                         <div class="panel-body">
                             <div class="form-group">
-                            
-                                
-                                <div class="col-sm-6 col-xs-6">
-                                    <div class="col-xs-10"><strong>{{$product['item']['title']}}</strong></div>
-                                    <div class="col-xs-10">Quantity:<span>{{$product['qty']}}</span></div>
-                                </div>
-                                <div class="col-sm-3 col-xs-3 text-right">
+
+
+                              <div class="col-sm-2 col-xs-2">
+                                <img style="max-height:150px" class="img-responsive" src="/storage/product_image/{{$product['item']['product_image']}}" alt="">
+                              </div>
+                              <div class="col-sm-6 col-xs-6">
+                                <strong>{{$product['item']['title']}}</strong>
+                              </div>
+                              <div class="col-xs-2">
+                                  <strong>Quantity: </strong><span>{{$product['qty']}}</span>
+                              </div>
+                                <div class="col-sm-2 col-xs-2 text-right">
                                     <h6><span>RM{{$product['price']}}</span></h6>
                                 </div>
-                                
+
                             </div>
-                        
-                        
+
+
 
 
                     </div>
@@ -121,10 +126,10 @@
                             </div>
                         </div>
                 </div>
-    
+
 
             </div>
-         
+
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pull-left">
                             <!--SHIPPING METHOD-->
                             <div class="panel panel-info">
@@ -274,9 +279,7 @@
                 </div>
                 </form>
 </div>
-        
+
 </div>
 
 @endsection
-
-
