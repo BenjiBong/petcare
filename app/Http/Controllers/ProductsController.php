@@ -21,6 +21,7 @@ class ProductsController extends Controller
     public function __construct()
     {
         $this->middleware('auth', ['except' => ['index', 'show']]);
+        $this->middleware('auth:admin', ['only' => ['create', 'store', 'edit', 'destroy', 'update']]);
     }
 
     public function getAddToCart(Request $request, $id){
@@ -204,7 +205,7 @@ class ProductsController extends Controller
           //Filename to Store
           $filenameToStore = $filename.'_'.time().'.'.$extension;
 
-          $path = $request->file('product_image')->storeAs('public/products_image', $filenameToStore);
+          $path = $request->file('product_image')->storeAs('public/product_image', $filenameToStore);
         }
 
 
@@ -227,7 +228,7 @@ class ProductsController extends Controller
         }
         $product->save();
 
-        return redirect('/products')->with('success', 'Product Updated');
+        return redirect('/admin/products/'.$product->id)->with('success', 'Product Updated');
     }
 
     /**

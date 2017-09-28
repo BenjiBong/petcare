@@ -17,9 +17,9 @@
         @if (count($users) > 0)
           @foreach($users as $user)
             <tr>
-              <td>{{$user->id}}</td>
-              <td>{{$user->name}}</td>
-              <td>{{$user->email}}</td>
+              <td><a href="users/{{$user->id}}">{{$user->id}}</a></td>
+              <td><a href="users/{{$user->id}}">{{$user->name}}</a></td>
+              <td><a href="users/{{$user->id}}">{{$user->email}}</a></td>
               <td>{!!Form::open(['action' => ['AdminController@destroyUser', $user->id], 'method' => 'user', 'class' => 'pull-right' ])!!}
               {{Form::hidden('_method', 'DELETE')}}
               {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}

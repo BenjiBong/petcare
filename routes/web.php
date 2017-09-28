@@ -65,10 +65,13 @@ Route::prefix('admin')->group(function(){
   Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
   Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
   Route::get('/users', 'AdminController@showUsers')->name('admin.users');
+  Route::get('/users/{id}', 'AdminController@showUser')->name('admin.user');
   Route::delete('/users/{id}', 'AdminController@destroyUser')->name('admin.users.delete');
   Route::get('/products', 'AdminController@showProducts')->name('admin.products');
+  Route::get('/products/{id}', 'AdminController@showProduct')->name('admin.product');
+  Route::get('/products/{id}/edit', 'ProductsController@edit')->name('admin.product.edit');
   //Route::post('/products/{id}', 'AdminController@updateProducts')->name('admin.products.update');
-  Route::delete('/products/{id}', 'ProductsController@destroy')->name('admin.products.delete');
+  Route::delete('/products/{id}', 'AdminController@destroyProduct')->name('admin.products.delete');
   Route::get('/','AdminController@index')->name('admin.dashboard');
   Route::post('/','AdminController@update')->name('admin.dashboard.update');
 });
