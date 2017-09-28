@@ -53,6 +53,24 @@ class ProductsController extends Controller
         }
         return view('products.shopping-cart',['products' => $cart->items, 'totalPrice' => $cart->totalPrice]);
     }
+
+    public function getCheckout()
+    {
+        $products = new Product;
+        if(!Session::has('cart'))
+        {
+            return view('products.shopping-cart');
+        }
+
+        $cart = Session::get('cart');
+        if(!$cart)
+        {
+         $cart = new Cart($cart);
+        }
+        
+        
+        return view('products.checkout',['products' => $cart->items, 'totalPrice' => $cart->totalPrice]);
+    }
     /**
      * Display a listing of the resource.
      *

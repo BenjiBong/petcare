@@ -7,9 +7,10 @@ use App\Http\Controllers\Controller;
 use Auth;
 use App\Admin;
 use App\User;
+
 class AdminLoginController extends Controller
 {
-  public function _construct()
+  public function __construct()
   {
     $this->middleware('guest:admin');
   }

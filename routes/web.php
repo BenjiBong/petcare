@@ -42,6 +42,11 @@ Route::get('/shopping-cart',[
     'as' => 'product.shoppingCart'
 ]);
 
+Route::get('/checkout',[
+    'uses' => 'ProductsController@getCheckout',
+    'as' => 'checkout'
+]);
+
 //Route::post('/dashboard','UserController@update_profile');
 //Route::get('/dashboard','UserController@dashboard');
 Route::get('pages.about', 'PagesController@about');

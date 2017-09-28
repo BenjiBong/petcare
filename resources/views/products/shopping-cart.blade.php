@@ -31,7 +31,7 @@
         </div>
         <br>
         <div class="pull right">
-            <button type="button" class="btn btn-success pull-right">Checkout</button>
+            <a href="{{route('checkout')}}" type="button" class="btn btn-success pull-right">Checkout</a>
         </div>
     </div>  
         
