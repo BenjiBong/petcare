@@ -48,6 +48,10 @@ class AdminController extends Controller
       $products = Product::orderBy('created_at', 'asc')->paginate(10);//paginate with 10 per page
       return view('admin.products')->with('products', $products);
     }
+    public function showProduct($id){
+      $product = Product::find($id);//paginate with 10 per page
+      return view('admin.showProduct')->with('product', $product);
+    }
 
     public function update(Request $request)
     {
@@ -80,6 +84,21 @@ class AdminController extends Controller
           $pet->delete();
         }
         return redirect('/admin/users')->with('success', 'User Deleted');
+    }
+
+    public function destroyProduct($id)
+     {
+        $product = Product::find($id);
+        //if (auth()->user()->id != $post->user_id){
+         // return redirect('/posts')->with('error', 'You do not have permission to delete this post!');
+       // }
+        if ($product->product_image !='noimage.jpg')
+        {
+          //Delete Image
+          Storage::delete('public/products_image/'.$product->product_image);
+        }
+        $product->delete();
+        return redirect('/admin/products')->with('success', 'Product Removed');
     }
 
 

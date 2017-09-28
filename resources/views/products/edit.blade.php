@@ -1,6 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.admin.app')
 
 @section('content')
+  <main class="col-sm-9 ml-sm-auto col-md-10 col-lg-8 pt-3" role="main">
+
     <h1>Edit Product</h1>
     <div class="form-group required">
       <label class='control-label'></label>Indicates required fields.
@@ -32,4 +34,5 @@
     {{Form::hidden('_method', 'PUT')}}
     {{Form::submit('Submit', ['class'=>'btn btn-primary'])}}
     {!! Form::close() !!}
+  </main>
 @endsection

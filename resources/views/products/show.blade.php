@@ -3,11 +3,11 @@
 @section('content')
 <br>
 <div class=col-main>
-    <div class="col-lg-5 col-sm-6 col-xs-12">
+    <div class="col-lg-4 col-sm-6 col-xs-12">
         <img style="max-height:750px" class="img-responsive" src="/storage/product_image/{{$products->product_image}}" alt="">
         <br><br>
     </div>
-    <div class="col-lg-7 col-sm-6 col-xs-12">
+    <div class="col-lg-8 col-sm-6 col-xs-12">
 
         <div><h1>{{$products->title}}</h1></div>
         <div class="info-orther">
@@ -18,8 +18,6 @@
          <div><p>SKU:{!!$products->sku!!}</p></div>
          <hr>
          <div><p>Stock:{!!$products->stock!!}</p></div>
-       <small>Created at: {{$products->created_at}}</small><br>
-        <small>Last updated: {{$products->updated_at}}</small>
         <hr>
         <div>
     </div>
