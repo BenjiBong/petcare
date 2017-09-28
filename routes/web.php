@@ -60,6 +60,7 @@ Route::prefix('admin')->group(function(){
   Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
   Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
   Route::get('/users', 'AdminController@showUsers')->name('admin.users');
+  Route::get('/users/{id}', 'AdminController@showUser')->name('admin.user');
   Route::delete('/users/{id}', 'AdminController@destroyUser')->name('admin.users.delete');
   Route::get('/products', 'AdminController@showProducts')->name('admin.products');
   //Route::post('/products/{id}', 'AdminController@updateProducts')->name('admin.products.update');
