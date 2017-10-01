@@ -22,8 +22,8 @@ class ProductsController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['index', 'show']]);
-        $this->middleware('auth:admin', ['only' => ['create', 'store', 'edit', 'destroy', 'update']]);
+        $this->middleware('auth', ['except' => ['index', 'show', 'edit', 'update', 'create', 'store']]);
+        $this->middleware('auth:admin', ['only' => ['create', 'store', 'edit', 'update']]);
     }
 
     public function getAddToCart(Request $request, $id){
@@ -70,8 +70,8 @@ class ProductsController extends Controller
         {
          $cart = new Cart($cart);
         }
-        
-        
+
+
         return view('products.checkout',['products' => $cart->items, 'totalPrice' => $cart->totalPrice]);
     }
 
@@ -191,7 +191,7 @@ class ProductsController extends Controller
         $product->product_image = $filenameToStore;
         $product->save();
 
-        return redirect('/products')->with('success', 'Product Created');
+        return view('admin.showProduct')->with('success', 'Product Created')->with('product', $product);
     }
 
     /**
