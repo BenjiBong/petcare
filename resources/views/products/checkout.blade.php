@@ -62,7 +62,6 @@
 
 @section('content')
 
-
 <div class="container wrapper">
     <div class="row cart-head">
         <div class="container">
@@ -85,12 +84,13 @@
     <br>
 
             <div class="row cart-body">
-            <form class="form-horizontal" method="post" action="">
+            <form class="form-horizontal" method="post" id="checkout-form" action="{{route('checkout')}}">
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12  pull-right">
                     <div class="panel panel-info">
                         <div class="panel-heading">
                             Review Order
                         </div>
+                        
                         @foreach($products as $product)
                         <div class="panel-body">
                             <div class="form-group">
@@ -143,51 +143,51 @@
                                     <div class="form-group">
                                         <div class="col-md-12"><strong>Country:</strong></div>
                                         <div class="col-md-12">
-                                            <input type="text" class="form-control" name="country" value="" />
+                                            <input type="text" id="address-zip" class="form-control" name="country" value="" />
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="col-md-6 col-xs-12">
                                             <strong>First Name:</strong>
-                                            <input type="text" name="first_name" class="form-control" value="" />
+                                            <input type="text" id="address-zip" name="first_name" class="form-control" value="" />
                                         </div>
                                         <div class="span1"></div>
                                         <div class="col-md-6 col-xs-12">
                                             <strong>Last Name:</strong>
-                                            <input type="text" name="last_name" class="form-control" value="" />
+                                            <input type="text" id="address-zip"  name="last_name" class="form-control" value="" />
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="col-md-12"><strong>Address:</strong></div>
                                         <div class="col-md-12">
-                                            <input type="text" name="address" class="form-control" value="" />
+                                            <input type="text" id="address-zip"  name="address" class="form-control" value="" />
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="col-md-12"><strong>City:</strong></div>
                                         <div class="col-md-12">
-                                            <input type="text" name="city" class="form-control" value="" />
+                                            <input type="text" id="address-zip" name="city" class="form-control" value="" />
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="col-md-12"><strong>State:</strong></div>
                                         <div class="col-md-12">
-                                            <input type="text" name="state" class="form-control" value="" />
+                                            <input type="text" id="address-zip"  name="state" class="form-control" value="" />
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="col-md-12"><strong>Zip / Postal Code:</strong></div>
                                         <div class="col-md-12">
-                                            <input type="text" name="zip_code" class="form-control" value="" />
+                                            <input type="text" id="address-zip"  name="zip_code" class="form-control" value="" />
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="col-md-12"><strong>Phone Number:</strong></div>
-                                        <div class="col-md-12"><input type="text" name="phone_number" class="form-control" value="" /></div>
+                                        <div class="col-md-12"><input type="text" id="address-zip"  name="phone_number" class="form-control" value="" /></div>
                                     </div>
                                     <div class="form-group">
                                         <div class="col-md-12"><strong>Email Address:</strong></div>
-                                        <div class="col-md-12"><input type="text" name="email_address" class="form-control" value="" /></div>
+                                        <div class="col-md-12"><input type="email" id="address-zip"  name="email_address" class="form-control" value="" /></div>
                                     </div>
                                 </div>
                             </div>
@@ -201,7 +201,7 @@
                             <div class="form-group">
                                 <div class="col-md-12"><strong>Card Type:</strong></div>
                                 <div class="col-md-12">
-                                    <select id="CreditCardType" name="CreditCardType" class="form-control">
+                                    <select for="card-type" id="card-type" name="card-type" class="form-control">
                                         <option value="5">Visa</option>
                                         <option value="6">MasterCard</option>
                                         <option value="7">American Express</option>
@@ -211,18 +211,18 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-md-12"><strong>Credit Card Number:</strong></div>
-                                <div class="col-md-12"><input type="text" class="form-control" name="car_number" value="" /></div>
+                                <div class="col-md-12"><input type="text" id="card-number" class="form-control" name="car_number" value="" /></div>
                             </div>
                             <div class="form-group">
-                                <div class="col-md-12"><strong>Card CVV:</strong></div>
-                                <div class="col-md-12"><input type="text" class="form-control" name="car_code" value="" /></div>
+                                <div class="col-md-12"><strong>Card CVC:</strong></div>
+                                <div class="col-md-12"><input type="text" id="card-cvc" class="form-control" name="card-cvc" value="" /></div>
                             </div>
                             <div class="form-group">
                                 <div class="col-md-12">
                                     <strong>Expiration Date</strong>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                    <select class="form-control" name="">
+                                    <select class="form-control" id="card-expiry-month" name="">
                                         <option value="">Month</option>
                                         <option value="01">01</option>
                                         <option value="02">02</option>
@@ -239,7 +239,7 @@
                                 </select>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                    <select class="form-control" name="">
+                                    <select class="form-control" id="card-expiry-year" name="">
                                         <option value="">Year</option>
                                         <option value="2015">2015</option>
                                         <option value="2016">2016</option>
@@ -270,6 +270,7 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-md-6 col-sm-6 col-xs-12">
+                                    {{ csrf_field()}}
                                     <button type="submit" class="btn btn-primary btn-submit-fix">Place Order</button>
                                 </div>
                             </div>
@@ -277,9 +278,17 @@
                     </div>
                     <!--CREDIT CART PAYMENT END-->
                 </div>
-                </form>
+                
+               
+            </form> 
+        </div>
+    
 </div>
 
-</div>
+@endsection
 
+
+@section('scripts')
+    <script src="https://js.stripe.com/v3/"></script>
+    <script type="text/javascript" src="{{URL::asset('js/checkout.js')}}"></script> 
 @endsection

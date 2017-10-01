@@ -47,6 +47,11 @@ Route::get('/checkout',[
     'as' => 'checkout'
 ]);
 
+Route::post('/checkout',[
+    'uses' => 'ProductsController@postCheckout',
+    'as' => 'checkout'
+]);
+
 //Route::post('/dashboard','UserController@update_profile');
 //Route::get('/dashboard','UserController@dashboard');
 Route::get('pages.about', 'PagesController@about');

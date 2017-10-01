@@ -9,6 +9,8 @@ use App\Product;//to use eloquent
 use DB;//to use sql to query.
 use Session;
 use App\Cart;
+use Stripe\Stripe;
+use Stripe\Charge;
 
 class ProductsController extends Controller
 {
@@ -71,6 +73,49 @@ class ProductsController extends Controller
         
         
         return view('products.checkout',['products' => $cart->items, 'totalPrice' => $cart->totalPrice]);
+    }
+
+    public function postCheckout(Request $request)
+    {
+        if(!Session::has('cart'))
+        {
+            return redirect('products.shopping-cart');
+        }
+
+        $cart = Session::get('cart');
+        if(!$cart)
+        {
+         $cart = new Cart($cart);
+        }
+
+        Stripe::setApiKey('sk_test_7EqOcTc0MYu7FktRYUN8rIK9');
+        try {
+             Charge::create(array(
+                "amount" => $cart->totalPrice *100,
+                "currency" => "usd",
+                "source" => $request->input('stripeToken'), //obtained with stripe.json_decode
+                "description" => "Test Charge"
+            ));
+            
+
+         /*   \Stripe\Charge::create(array(
+                "amount" => $cart->totalPrice *100,
+                "currency" => "usd",
+                "source" =>  $request->input('stripeToken'), // obtained with Stripe.js
+                "description" => "Test Charge"
+              ));    */
+
+        }
+
+        
+        catch (\Exception $e){
+            return redirect()->route('checkout')->with('error', $e->getMessage());
+        }
+
+        Session::forget('cart');
+        return redirect()->route('products.index')->with('success', 'Successfully purchased products');
+
+        
     }
     /**
      * Display a listing of the resource.
