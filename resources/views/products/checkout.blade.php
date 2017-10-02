@@ -58,7 +58,11 @@
     margin-left: 5px;
 }
 </style>
-
+<script>
+    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+    // <script type="text/javascript" src="{{ URL::to('js/checkout.js') }}"></script> 
+    <script type="text/javascript" src="js/checkout.js"></script>
+</script>
 
 @section('content')
 
@@ -269,9 +273,15 @@
                                 </div>
                             </div>
                             <div class="form-group">
+                                <div class="col-xs-12">
+                                            <strong>Order Total</strong>
+                                            <div class="pull-right"><span>$</span><span>{{$totalPrice}}</span></div>
+                                        </div>
+                            </div>
+                            <div class="form-group">
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     {{ csrf_field()}}
-                                    <button type="submit" class="btn btn-primary btn-submit-fix">Place Order</button>
+                                    <button type="submit" class="btn btn-primary btn-submit-fix">Place Order </button>
                                 </div>
                             </div>
                         </div>
@@ -284,11 +294,6 @@
         </div>
     
 </div>
-
 @endsection
 
 
-@section('scripts')
-    <script src="https://js.stripe.com/v3/"></script>
-    <script type="text/javascript" src="{{URL::asset('js/checkout.js')}}"></script> 
-@endsection

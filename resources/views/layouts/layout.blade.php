@@ -15,12 +15,15 @@
          <link rel="stylesheet" href="{{ asset('css/font-awesome.css')}}" type="text/css">
         <!-- Scripts -->
         <script type="text/javascript" src="/js/">
-
+<script type="text/javascript" src="https://js/stripe.com/v3/"></script>
+<script type="text/javascript" src="/javascripts/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="/js/checkout.js"></script>
         </script>
     </head>
     <body>
       @yield ('header')
       @yield ('content')
       @yield ('footer')
+      @yield('scripts')
     </body>
 </html>

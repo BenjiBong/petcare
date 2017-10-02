@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "fcede6e80edbf58f9522bfe5f7d5faa1",
+    "content-hash": "cfd649cd4c1858a1de0a96f2d2dec0c4",
     "packages": [
         {
             "name": "barryvdh/laravel-debugbar",
@@ -1681,6 +1681,55 @@
                 "random"
             ],
             "time": "2017-09-27T21:40:39+00:00"
+        },
+        {
+            "name": "paypal/rest-api-sdk-php",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/paypal/PayPal-PHP-SDK.git",
+                "reference": "2afc181f50caf1a1da1f2dbf6742dc39dbbc13e3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/paypal/PayPal-PHP-SDK/zipball/2afc181f50caf1a1da1f2dbf6742dc39dbbc13e3",
+                "reference": "2afc181f50caf1a1da1f2dbf6742dc39dbbc13e3",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*",
+                "php": ">=5.3.0",
+                "psr/log": "^1.0.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "3.7.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "PayPal": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "PayPal",
+                    "homepage": "https://github.com/paypal/rest-api-sdk-php/contributors"
+                }
+            ],
+            "description": "PayPal's PHP SDK for REST APIs",
+            "homepage": "http://paypal.github.io/PayPal-PHP-SDK/",
+            "keywords": [
+                "payments",
+                "paypal",
+                "rest",
+                "sdk"
+            ],
+            "time": "2017-09-25T21:11:54+00:00"
         },
         {
             "name": "psr/http-message",
@@ -4907,6 +4956,7 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "intervention/image": 20,
+        "paypal/rest-api-sdk-php": 20,
         "stripe/stripe-php": 20,
         "codeception/codeception": 20
     },

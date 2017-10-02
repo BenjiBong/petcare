@@ -88,32 +88,27 @@ class ProductsController extends Controller
          $cart = new Cart($cart);
         }
 
-        Stripe::setApiKey('sk_test_7EqOcTc0MYu7FktRYUN8rIK9');
-        try {
-             Charge::create(array(
-                "amount" => $cart->totalPrice *100,
-                "currency" => "usd",
-                "source" => $request->input('stripeToken'), //obtained with stripe.json_decode
-                "description" => "Test Charge"
-            ));
             
 
-         /*   \Stripe\Charge::create(array(
-                "amount" => $cart->totalPrice *100,
-                "currency" => "usd",
-                "source" =>  $request->input('stripeToken'), // obtained with Stripe.js
-                "description" => "Test Charge"
-              ));    */
-
-        }
-
+        /*Session::put('cart', $cart);
+        Stripe::setApiKey('sk_test_7EqOcTc0MYu7FktRYUN8rIK9');
         
-        catch (\Exception $e){
-            return redirect()->route('checkout')->with('error', $e->getMessage());
-        }
-
+            $charge =Charge::create(array(
+                "amount" => $cart->totalPrice * 100,
+                "currency" => "usd",
+                "source" => $request->input('stripeToken'), // obtained with Stripe.js
+                "description" => "Test Charge"
+            ));
+			$order = new Order;
+			$order->cart = serialize($cart);
+			$order->address = $request->address;
+			$order->name = $request->name;
+			$order->payment_id = $charge->id;
+			
+			Auth::user()->orders()->save($order);
+       
         Session::forget('cart');
-        return redirect()->route('products.index')->with('success', 'Successfully purchased products');
+        return redirect('/')->with('success', 'Successfully purchased products!');*/
 
         
     }
