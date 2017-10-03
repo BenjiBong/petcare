@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;//to be able to delete image. For storage:: library
 use App\Pet;//to use eloquent
 use Illuminate\Support\Facades\Auth;
+use Image;
 
 class PetsController extends Controller
 {
@@ -78,7 +79,7 @@ class PetsController extends Controller
               //Filename to Store
               $filenameToStore = $filename.'_'.time().'.'.$extension;
 
-              $path = $request->file('pet_image')->storeAs('storage/pet_images', $filenameToStore);
+              $path = $request->file('pet_image')->storeAs('public/pet_images', $filenameToStore);
             }
             else {
               $filenameToStore = 'noimage.jpg';
@@ -156,7 +157,8 @@ class PetsController extends Controller
             //Filename to Store
             $filenameToStore = $filename.'_'.time().'.'.$extension;
 
-            $path = $request->file('pet_image')->storeAs('/storage/pet_images', $filenameToStore);
+            $path = $request->file('pet_image')->storeAs('/public/pet_images', $filenameToStore);
+            //$path = $request->file('pet_image')->storeAs(public_path('/pet_images'), $filenameToStore);
           }
 
           //to edit pet

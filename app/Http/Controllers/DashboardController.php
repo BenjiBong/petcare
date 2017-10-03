@@ -31,13 +31,13 @@ class DashboardController extends Controller
        $user_id = auth()->user()->id;
        $users = User::find($user_id);
         $users = Auth::user();
-        //$orders = Auth::user()->orders;
-        //$orders->transform(function ($order, $key){
-        //$order->cart = unserialize($order->cart);
-        //return $order;
-      //});
-      return view('dashboard', array('users' => Auth::user()) )->with('pets',$users->pets);
-      //return view('dashboard', array('users' => Auth::user(), 'orders' => $orders) )->with('pets',$users->pets);
+        $orders = Auth::user()->orders;//to get orders
+        $orders->transform(function ($order, $key){
+        $order->cart = unserialize($order->cart);
+        return $order;
+      });
+      //return view('dashboard', array('users' => Auth::user()) )->with('pets',$users->pets);
+      return view('dashboard', array('users' => Auth::user(), 'orders' => $orders) )->with('pets',$users->pets);
     }
 
 
@@ -85,8 +85,13 @@ class DashboardController extends Controller
         }
         $user_id = auth()->user()->id;
         $users = User::find($user_id);
-         $users = Auth::user();
-        return view('/dashboard', array('users' => Auth::user()) )->with('pets',$users->pets);
+        $users = Auth::user();
+        $orders = Auth::user()->orders;//to get orders
+        $orders->transform(function ($order, $key){
+        $order->cart = unserialize($order->cart);
+        return $order;
+      });
+        return view('/dashboard', array('users' => Auth::user(), 'orders' => $orders, 'pets' => $users->pets) );
     }
         //Handle file upload
 

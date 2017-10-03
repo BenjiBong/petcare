@@ -22,6 +22,8 @@ use Illuminate\Support\Facades;
 use App\Product;//to use eloquent
 use DB;//to use sql to query.
 use App\Cart;
+use App\Order;
+use Auth;
 
 class PaypalController extends Controller
 {
@@ -153,7 +155,13 @@ class PaypalController extends Controller
 
       Session::flash('alert', 'Funds Loaded Successfully!');
       Session::flash('alertClass', 'success');
-      return redirect('/products')->with('success', 'Successfully purchased products!');;
+      $cart = Session::get('cart');//to clear the cart
+      $order = new Order();
+      $order->cart = serialize($cart);//store cart as a string in the db fa-shield
+      $order->payment_id = $payment_id;
+      Auth::user()->orders()->save($order);
+      Session::forget('cart');//to clear the cart
+      return redirect('/products')->with('success', 'Successfully purchased products!');
     }
 
     Session::flash('alert', 'Unexpected error occurred & payment has been failed.');
