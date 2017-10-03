@@ -33,4 +33,7 @@ class User extends Authenticatable
     public function pets(){
       return $this->hasMany('App\Pet');
     }
+    public function orders(){
+      return $this->hasMany('App\Order');
+    }
 }
