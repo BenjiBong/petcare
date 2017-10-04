@@ -42,7 +42,19 @@ class ProductsController extends Controller
         //var_dump($request->session()->get('cart'));
         return redirect()->route('products.index');
     }
-
+    public function removeFromCart(Request $request, $id){
+        $product = Product::find($id);
+        $cart = Session::has('cart') ? Session::get('cart') : null;
+        if(!$cart)
+        {
+         $cart = new Cart($cart);
+        }
+        $cart->remove($product, $product->id);
+        Session::put('cart', $cart);
+        //$request->session()->put('cart', $cart);
+        //var_dump($request->session()->get('cart'));
+        return redirect()->route('product.shoppingCart');
+    }
     public function getCart(){
 
         if(!Session::has('cart'))
@@ -88,11 +100,11 @@ class ProductsController extends Controller
          $cart = new Cart($cart);
         }
 
-            
+
 
         /*Session::put('cart', $cart);
         Stripe::setApiKey('sk_test_7EqOcTc0MYu7FktRYUN8rIK9');
-        
+
             $charge =Charge::create(array(
                 "amount" => $cart->totalPrice * 100,
                 "currency" => "usd",
@@ -104,13 +116,13 @@ class ProductsController extends Controller
 			$order->address = $request->address;
 			$order->name = $request->name;
 			$order->payment_id = $charge->id;
-			
+
 			Auth::user()->orders()->save($order);
-       
+
         Session::forget('cart');
         return redirect('/')->with('success', 'Successfully purchased products!');*/
 
-        
+
     }
     /**
      * Display a listing of the resource.

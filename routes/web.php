@@ -36,6 +36,10 @@ Route::get('/add_to_cart{id}',[
     'uses' => 'ProductsController@getAddToCart',
     'as' => 'product.addToCart'
 ]);
+Route::get('/remove_from_cart{id}',[
+    'uses' => 'ProductsController@removeFromCart',
+    'as' => 'product.removeFromCart'
+]);
 
 Route::get('/shopping-cart',[
     'uses' => 'ProductsController@getCart',
@@ -83,6 +87,8 @@ Route::prefix('admin')->group(function(){
   Route::delete('/users/{id}', 'AdminController@destroyUser')->name('admin.users.delete');
   Route::get('/products', 'AdminController@showProducts')->name('admin.products');
   Route::get('/products/{id}', 'AdminController@showProduct')->name('admin.product');
+  Route::get('/orders', 'AdminController@showOrders')->name('admin.orders');
+  Route::get('/orders/{id}', 'AdminController@showOrder')->name('admin.order');
   Route::get('/products/{id}/edit', 'ProductsController@edit')->name('admin.product.edit');
   //Route::post('/products/{id}', 'AdminController@updateProducts')->name('admin.products.update');
   Route::delete('/products/{id}', 'AdminController@destroyProduct')->name('admin.products.delete');

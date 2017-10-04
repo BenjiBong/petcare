@@ -1,4 +1,4 @@
-@extends('layouts.app') 
+@extends('layouts.app')
 @section('content')
 <h2>Shopping Cart</h2>
 <br>
@@ -13,6 +13,7 @@
                         <th style="width:10%">Price</th>
                         <th style="width:8%">Quantity</th>
                         <th style="width:7%" class="text-center">Subtotal</th>
+                        <th style="width:7%" class="text-center"></th>
 
                     </tr>
                 </thead>
@@ -21,19 +22,23 @@
                 <tbody>
                     <td><img style="max-height:150px" class="img-responsive" src="/storage/product_image/{{$product['item']['product_image']}}" alt=""></td>
                     <td>{{$product['item']['title']}}&nbsp;&nbsp;</td>
-                    <td><span class="label label-success">RM: {{$product['price']}}</span></td>
+                    <td><span class="label label-info">RM: {{$product['item']['price']}}</span></td>
                     <td><span class="badge text-center">{{$product['qty']}}</span></td>
-                    <td><a>Delete</a></td>
+                    <td><span class="label label-warning">RM: {{$product['price']}}</span></td>
+                   <td><a href="{{route('product.removeFromCart', ['id' => $product['item']['id']])}}" class="btn btn-danger">
+                    Remove
+                    </a></td>
+
                     @endforeach
-                    
-                    <td class="text-center"><strong>Total :RM {{$totalPrice}}</strong></td>
+
+
                 </tbody>
 
+<tr  ><td colspan=6 class="text-center"><div class="pull-right"><h4><strong>Total :RM {{$totalPrice}}</strong></h4></div></td></tr>
             </table>
         </div>
         <br>
         <div class="form-group">
-            <div class="col-md-12"><strong>Amount:</strong></div>
             <div class="col-md-12">
                 <input type="hidden" id="amount" class="form-control" name="amount" value="" />
                 <input type="hidden" name="amount" value="{{$totalPrice}}">

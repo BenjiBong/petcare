@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Product;
+use App\Order;
 use App\Admin;
 use App\Pet;
 use Image;
@@ -51,6 +52,15 @@ class AdminController extends Controller
     public function showProduct($id){
       $product = Product::find($id);//paginate with 10 per page
       return view('admin.showProduct')->with('product', $product);
+    }
+    public function showOrders(){
+      $orders = Order::orderBy('created_at', 'asc')->paginate(10);//paginate with 10 per page
+      return view('admin.orders')->with('orders', $orders);
+    }
+    public function showOrder($id){
+      $order = Order::find($id);//paginate with 10 per page
+      $order->cart = unserialize($order->cart);
+      return view('admin.showOrder')->with('order', $order);
     }
 
     public function update(Request $request)
